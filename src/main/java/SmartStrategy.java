@@ -5,6 +5,8 @@ public class SmartStrategy implements OrderingStrategy{
     List<StringDrink> drinkList = new ArrayList<>();
     List<StringRecipe> recipeList = new ArrayList<>();
 
+    public SmartStrategy(){}
+
     @Override
     public void wants(StringDrink drink, StringRecipe recipe, StringBar bar){
         if(bar.isHappyHour()){
