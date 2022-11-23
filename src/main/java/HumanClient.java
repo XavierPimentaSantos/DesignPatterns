@@ -3,21 +3,22 @@ public class HumanClient implements Client{
     StringDrink stringDrink;
     StringRecipe stringRecipe;
 
+    OrderingStrategy orderingStrategy;
+
     public void wants(StringDrink drink, StringRecipe recipe, StringBar bar){
+        orderingStrategy.wants(drink, recipe, bar);
         stringBar = bar;
-        stringDrink = drink;
-        stringRecipe = recipe;
     }
 
     public void happyHourStarted(Bar bar){
-        if(stringBar == bar) {
-            stringBar.startHappyHour();
-        }
+        orderingStrategy.happyHourStarted(stringBar);
     }
 
     public void happyHourEnded(Bar bar){
-        if(stringBar == bar){
-            stringBar.endHappyHour();
-        }
+        orderingStrategy.happyHourEnded(stringBar);
+    }
+
+    public HumanClient(OrderingStrategy strategy){
+        orderingStrategy = strategy;
     }
 }
